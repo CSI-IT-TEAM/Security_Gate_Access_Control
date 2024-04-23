@@ -17,5 +17,3 @@ export const GateComboUpdateURL =
 export const GateDataUpdateURL =
   baseURL + "LMES/PKG_RSM_CONTRACTOR.GATE_DATA_SAVE/SAVE";
 export const GateImageUpdateURL = "https://172.30.10.120:10000/RSM_GATE_UPLOAD";
-
- // baseURL + "HUBIC/PKG_GATE_SECURITY.GATE_IMG_UPLOAD/SAVE";
