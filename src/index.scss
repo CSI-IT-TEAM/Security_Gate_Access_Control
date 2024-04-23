@@ -1,0 +1,757 @@
+@import "../src/styles/color.scss";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+// body,
+// html {
+//     width: 100%;
+//     height: 100%;
+//     margin: 0px;
+//     padding: 0px;
+//     overflow-x: hidden;
+//     background-color: $color-white;
+// }
+
+// a {
+//     transition: all .4s ease;
+//     letter-spacing: 0.5px;
+//     font-weight: 500;
+//     text-decoration: none;
+//     width: 100%;
+// }
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+/********* NUNITO FONT *********/
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-Black.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-Bold.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-ExtraBold.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-BoldItalic.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-Italic.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-BlackItalic.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-ExtraLight.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-ExtraBoldItalic.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-ExtraBoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-Light.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-Medium.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-Regular.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-LightItalic.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-ExtraLightItalic.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-ExtraLightItalic.woff') format('woff');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-SemiBold.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-SemiBoldItalic.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('./assets/fonts/Nunito/Nunito-MediumItalic.woff2') format('woff2'),
+        url('./assets/fonts/Nunito/Nunito-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+
+
+/* Open Sans*/
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans/OpenSans-BoldItalic.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans/OpenSans-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans/OpenSans-Bold.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans/OpenSans-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans/OpenSans-ExtraBoldItalic.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans/OpenSans-ExtraBoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans/OpenSans-ExtraBold.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans/OpenSans-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans/OpenSans-LightItalic.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans/OpenSans-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans/OpenSans-Italic.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans/OpenSans-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans/OpenSans-Light.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans/OpenSans-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans/OpenSans-MediumItalic.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans/OpenSans-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans/OpenSans-Medium.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans/OpenSans-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans/OpenSans-Regular.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans/OpenSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans/OpenSans-SemiBold.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans/OpenSans-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans/OpenSans-SemiBoldItalic.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans/OpenSans-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+/* ./assets/fonts/Inconsolata/Inconsolata fonts */
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('./assets/fonts/Inconsolata/Inconsolata-Bold.woff2') format('woff2'),
+        url('./assets/fonts/Inconsolata/Inconsolata-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('./assets/fonts/Inconsolata/Inconsolata-Black.woff2') format('woff2'),
+        url('./assets/fonts/Inconsolata/Inconsolata-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('./assets/fonts/Inconsolata/Inconsolata-Regular.woff2') format('woff2'),
+        url('./assets/fonts/Inconsolata/Inconsolata-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('./assets/fonts/Inconsolata/Inconsolata-ExtraLight.woff2') format('woff2'),
+        url('./assets/fonts/Inconsolata/Inconsolata-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('./assets/fonts/Inconsolata/Inconsolata-Medium.woff2') format('woff2'),
+        url('./assets/fonts/Inconsolata/Inconsolata-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('./assets/fonts/Inconsolata/Inconsolata-SemiBold.woff2') format('woff2'),
+        url('./assets/fonts/Inconsolata/Inconsolata-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('./assets/fonts/Inconsolata/Inconsolata-Light.woff2') format('woff2'),
+        url('./assets/fonts/Inconsolata/Inconsolata-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('./assets/fonts/Inconsolata/Inconsolata-ExtraBold.woff2') format('woff2'),
+        url('./assets/fonts/Inconsolata/Inconsolata-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Calibri fonts */
+
+@font-face {
+    font-family: 'Calibri';
+    src: url('./assets/fonts/Calibri/Calibri-Italic.woff2') format('woff2'),
+        url('./assets/fonts/Calibri/Calibri-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Calibri';
+    src: url('./assets/fonts/Calibri/Calibri.woff2') format('woff2'),
+        url('./assets/fonts/Calibri/Calibri.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Calibri';
+    src: url('./assets/fonts/Calibri/Calibri-Bold.woff2') format('woff2'),
+        url('./assets/fonts/Calibri/Calibri-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Calibri';
+    src: url('./assets/fonts/Calibri/Calibri-Light.woff2') format('woff2'),
+        url('./assets/fonts/Calibri/Calibri-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Calibri';
+    src: url('./assets/fonts/Calibri/Calibri-BoldItalic.woff2') format('woff2'),
+        url('./assets/fonts/Calibri/Calibri-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Calibri';
+    src: url('./assets/fonts/Calibri/Calibri-LightItalic.woff2') format('woff2'),
+        url('./assets/fonts/Calibri/Calibri-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+body {
+    font-family: 'Calibri', 'Inconsolata', 'Roboto', 'Open Sans', sans-serif;
+    // font-weight: 500;
+    //font-size: 20px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 0px;
+
+    @media screen and (max-width: 479px) {
+        width: 0px;
+    }
+}
+
+::-webkit-scrollbar-track {
+    background-color: $color-white-1;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: $color-gray-1;
+}
+
+/* Basic Layout */
+.s-layout {
+    padding-top: 70px;
+    padding-left: 270px;
+
+    @media screen and (max-width: 991px) {
+        padding-left: 0;
+    }
+}
+
+.s-layout--active {
+    padding-left: 80px;
+
+    @media screen and (max-width: 991px) {
+        padding-left: 0;
+    }
+}
+
+/* Overlay Header */
+.s-overlay-header {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 99;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s ease;
+}
+
+.s-overlay-header--active {
+    @media screen and (max-width: 991px) {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.b-empty-box {
+    text-align: center;
+
+    .b-thumb {
+        width: 200px;
+        height: auto;
+        margin-bottom: 10px;
+
+        @media screen and (max-width: 767px) {
+            width: 150px;
+        }
+    }
+
+    .b-title {
+        font-size: 24px;
+        font-weight: 700;
+
+        @media screen and (max-width: 991px) {
+            font-size: 22px;
+        }
+    }
+
+    .b-desc {
+        @media screen and (max-width: 991px) {
+            font-size: 15px;
+        }
+    }
+}
+
+.b-empty-box--mobile{
+    .b-thumb {
+        width: 150px;
+    }
+
+    .b-title {
+        font-size: 20px;
+    }
+
+    .b-desc {
+        font-size: 15px;
+    }
+}
+
+.bg-white {
+    background-color: $color-white !important;
+}
+
+.bg-gray {
+    background-color: #ebf0f0 !important;
+    border-radius: 5px;
+
+    fieldset {
+        border: none;
+    }
+
+    input{
+        padding: 13px !important;
+        font-size: 16px !important;
+    }
+
+    input::placeholder {
+        color: #777;
+        opacity: 1;
+        /* Firefox */
+    }
+
+    input::-ms-input-placeholder {
+        /* Edge 12 -18 */
+        color: #777;
+    }
+}
+
+.MuiContainer-root {
+    @media screen and (max-width: 479px) {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.s-title {
+    margin: 10px 0 !important;
+    padding-bottom: 8px;
+    border-bottom: solid 2px #58595b;
+    font-size: 25px !important;
+    font-weight: 700 !important;
+    color: #072d7a;
+    text-transform: capitalize;
+
+    @media(max-width: 479px) {
+        margin-top: 0;
+        font-size: 23px;
+    }
+}
+
+.b-input input {
+    border-color: #c4c4c4;
+    font-family: Open Sans, Inconsolata, Roboto, Calibri, sans-serif;
+    font-size: 16px;
+    padding: 12px;
+}
+
+.s-thumb {
+    width: calc(100% - 10px);
+    height: 322px;
+    border-radius: 50px;
+    margin-left: 10px;
+    border: 5px solid #e6e9ee;
+    position: relative;
+    overflow: hidden;
+
+    img{
+        object-fit: cover;
+    }
+}
+
+.s-thumb--default{
+    padding: 35px 0 50px;
+    background-color: #f8f6f7;
+
+    img{
+        object-fit: contain;
+    }
+
+    @media screen and (max-width: 767px) {
+        padding: 0 30px;
+    }
+}
+
+.s-bot{
+    margin-top: 35px;
+    position: relative;
+    margin-bottom: 10px;
+    width: 100%;
+
+    @media screen and (max-width: 1024px) {
+        margin-top: 20px;
+    }
+}
+
+.s-total{
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: rgb(63, 81, 181);
+    font-family: Calibri, Inconsolata, Roboto, "Open Sans", sans-serif !important;
+}
+
+.rs-input-group{
+    border-color: #b8b6b7 !important;
+    height: 45px;
+
+    .rs-input{
+        height: 43px !important;
+        font-size: 17px !important; 
+    }
+}
+
+.rs-modal-body{
+    margin-top: 15px !important;
+    overflow: visible !important;
+}
+
+.b-card-40{
+    padding: 10px;
+    background-color: #fff;
+    transition: all .4s ease;
+    border-radius: 5px;
+    cursor: pointer;
+
+    @media screen and (max-width: 479px) {
+        padding: 10px;
+    }
+
+    &:hover{
+        background-color: #ebf5fa;
+
+        .b-title{
+            color: #3f51b5;
+        }
+    }
+
+    .b-icon{
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .b-title{
+        font-weight: 600;
+        font-family: Open Sans,Inconsolata,Roboto,Calibri,sans-serif;
+        color: #333;
+        transition: all .4s ease;
+        margin-left: 25px;
+        font-size: 16px;
+    }
+
+    .b-title--selected{
+        color: #3f51b5;
+    }
+}
+
+.b-card-40--selected{
+    background-color: #f8f6f7;
+}
+
+.b-validate {
+    align-items: center;
+    color: red;
+    display: flex;
+    font-family: Mulish, Nunito, sans-serif !important;
+    font-size: 14px !important;
+    font-style: italic;
+    font-weight: 600 !important;
+    gap: 3px;
+    justify-content: flex-end;
+    margin-top: 5px !important;
+}
+
+.rs-input{
+    color: #000 !important;
+}
+
+.MuiDataGrid-cell{
+    color: #333 !important;
+    font-weight: 500 !important;
+}
+
+.s-selected-row{
+    background-color: #fffee3 !important;
+}
+
+.MuiDataGrid-cell:focus-within{
+    outline: none !important;
+}
+
+.btn-search{
+    height: 47px;
+    margin-top: 27px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    font-size: 16px !important;
+    color: #fff !important;
+    background-color: #417d9d !important;
+
+    @media screen and (max-width: 1024px) {
+        margin-top: 10px !important;
+    }
+}
+
+.b-divide{
+    min-width: 600px;
+
+    @media screen and (max-width: 1024px) {
+        min-width: 300px;
+    }
+}
