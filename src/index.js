@@ -27,8 +27,8 @@ i18next
 .use(HttpApi)
 .init({
     supportedLngs: ["vn", "en"],
-    fallbackLng: "en",
-    lng: "en", // default language
+    fallbackLng: "vn",
+    lng: "vn", // default language
     detection: {
         order: ["cookie", "htmlTag", "localStorage", "path", "subdomain"],
         // cache user language on
