@@ -210,16 +210,16 @@ const Homepage = () => {
             return;
         }
 
-        Swal.fire({
-            title: t('title_confirm'),
-            position: "center",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "seagreen",
-            cancelButtonColor: "#dc3741",
-            confirmButtonText: "Yes",
-        }).then(async (result) => {
-            if (result.value) {
+        // Swal.fire({
+        //     title: t('title_confirm'),
+        //     position: "center",
+        //     icon: "warning",
+        //     showCancelButton: true,
+        //     confirmButtonColor: "seagreen",
+        //     cancelButtonColor: "#dc3741",
+        //     confirmButtonText: "Yes",
+        // }).then(async (result) => {
+        //     if (result.value) {
                 Swal.fire({
                     title: "Please wait!",
                     allowOutsideClick: false,
@@ -374,8 +374,8 @@ const Homepage = () => {
                         timer: 1500,
                     });
                 }
-            }
-        });
+            // }
+        // });
     }
 
     ////////Button Upload
@@ -658,7 +658,7 @@ const Homepage = () => {
                 setData(data => {
                     return {
                         ...data,
-                        VIST_ID         : _visitID[0].VIST_ID,
+                        VIST_ID         : _visitID[0].ITEM_CD,
                         VIST_CMPY_CD    : _searchData[0].VIST_CMPY_ID, 
                         VIST_CMPY_NM    : _searchData[0].VIST_CMPY_NM, 
                         VIST_NAME       : _searchData[0].VIST_NM, 
