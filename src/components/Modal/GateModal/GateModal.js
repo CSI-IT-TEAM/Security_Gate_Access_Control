@@ -68,7 +68,8 @@ const GateModal = ({ open, type, data, handleData, handleClose, handleAdd }) => 
 
     //// Handle Select Item
     const handleSelect = (code) => {
-        setSelect(select => code);
+        handleData(type, code);
+        handleClose();
     }
 
     //////Row Rendered Of React-Virtualized
@@ -112,12 +113,6 @@ const GateModal = ({ open, type, data, handleData, handleClose, handleAdd }) => 
             let _filterData = _prevData.filter(item => item.ITEM_NM.includes(value) || item.ITEM_NM.toLowerCase().includes(value.toLowerCase()));
             setList(list => _filterData);
         }
-    }
-
-    //// Handle Confirm Data
-    const handleConfirm = () => {
-        handleData(type, select);
-        handleClose();
     }
 
     return (
@@ -200,14 +195,6 @@ const GateModal = ({ open, type, data, handleData, handleClose, handleAdd }) => 
                     }
                 </Box>
             </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={handleConfirm} appearance="primary" sx={{ padding: "5px 15px", background: "seagreen", color: "#fff", fontWeight: 600, marginRight: "5px", textTransform: "capitalize", "&:hover": { background: "green" } }}>
-                    {t('confirm')}
-                </Button>
-                <Button onClick={handleClose} appearance="subtle" sx={{ padding: "5px 15px", background: "#d32f2f", color: "#fff", fontWeight: 600, textTransform: "capitalize", "&:hover": { background: "red" } }}>
-                    {t('swal_cancel')}
-                </Button>
-            </Modal.Footer>
         </Modal>
     )
 }

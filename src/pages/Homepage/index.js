@@ -624,6 +624,81 @@ const Homepage = () => {
         window.open(url.toString(), '_blank');
     }
 
+    //// Handle Key Press
+    const handleKeyPress = async(e, value) => {
+        if (e.key === 'Enter') {
+            // Call the desired function when Enter is pressed
+
+            Swal.fire({
+                title: "Please wait!",
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+            });
+
+            let _searchData = await fetchData(GateDataSelectURL, GateDataListParams("Q_CAR", data.PLANT_CD, "", "", "", value));
+            let _visitID = await fetchData(GateComboSelectURL, GateComboListParams("Q_VISIT_ID", ""));
+    
+            if(_searchData !== null && _searchData.length > 0){
+                setTypeTake(typeTake => "camera");
+                let _imgData = await fetchData(GateImageSelectURL, {
+                    ARG_TYPE: "Q",
+                    ARG_ID_TYPE_CD: _searchData[0].ID_TYPE_DIV,
+                    ARG_ID_NUM: getSearchValue(_searchData[0].ID_TYPE_DIV, _searchData[0].ID_NUM, _searchData[0].CAR_NUM),
+                    OUT_CURSOR: "",
+                });
+    
+                if(_imgData !== null && _imgData.length > 0){
+                    setThumb(thumb => getURLImageFormat(_imgData[0].PHOTO));
+                }else{
+                    handleCaptureImage();
+                }
+    
+                setData(data => {
+                    return {
+                        ...data,
+                        VIST_ID         : _visitID[0].VIST_ID,
+                        VIST_CMPY_CD    : _searchData[0].VIST_CMPY_ID, 
+                        VIST_CMPY_NM    : _searchData[0].VIST_CMPY_NM, 
+                        VIST_NAME       : _searchData[0].VIST_NM, 
+                        NEED_DIV_CD     : _searchData[0].NEED_DIV_CD, 
+                        NEED_DIV_NM     : _searchData[0].NEED_DIV_NM,
+                        ID_TYPE_CD      : _searchData[0].ID_TYPE_DIV, 
+                        ID_NUM          : _searchData[0].ID_NUM,
+                        CAR_TYPE_CD     : _searchData[0].CAR_TYPE_DIV ?? "",
+                        CAR_NUM         : _searchData[0].CAR_NUM, 
+                        DEST_CD         : _searchData[0].DEST_CD, 
+                        DEST_NM         : _searchData[0].DEST_NM, 
+                        DEST_EMP_NO     : _searchData[0].EMP_NO, 
+                        DEST_EMP_NM     : _searchData[0].EMP_NAME, 
+                        VIST_CARD_NO    : _searchData[0].VIST_CARD_NO, 
+                        VIST_STS        : _searchData[0].VIST_STS, 
+                        IN_YMD          : _searchData[0].IN_YMD ?? "",
+                        IN_HMS          : _searchData[0].IN_HMS ?? "", 
+                        REMARK          : _searchData[0].REMARK, 
+                        IMG             : "",
+                    }
+                });
+                Swal.close();
+            }else{
+                Swal.close();
+                Swal.fire({
+                    title: t('title_something_wrong'),
+                    text: t("not-found"),
+                    position: "center",
+                    icon: "error",
+                    showCancelButton: false,
+                    confirmButtonText: "OK",
+                }).then(async (result) => {
+                    if(result){
+                        handleNew();
+                    }
+                });
+            }
+        }
+    }
+
     return (
         <>
             <Container
@@ -642,9 +717,11 @@ const Homepage = () => {
                     <video ref={videoRef} autoPlay style={{ display: "block", position: "absolute", opacity: 0, width: '400px', height: 'auto' }} />
                     <canvas ref={canvasRef} style={{ display: "none" }} width={400} height={300} />
                     <Box style={{ position: 'relative', width: "100%" }}>
-                        <Typography variant="h5" className="s-title" onClick={handleConnect}>
-                            {t('title_gate_secure')}
-                        </Typography>
+                        <Box className="s-title">
+                            <Typography variant="h5" className="title" onClick={handleConnect}>
+                                {t('title_gate_secure')}
+                            </Typography>
+                        </Box>
                         <Box sx={{ position: 'absolute', top: 5, right: 0, }}>
                             <Stack direction="row" alignItems="center" justifyContent="center" spacing={0.75}>
                                 <FixedButton
@@ -820,6 +897,7 @@ const Homepage = () => {
                                                 placeholder={t('plholder_data')}
                                                 classList={"b-input bg-white"}
                                                 handleChange={handleChange}
+                                                handleKey={handleKeyPress}
                                             />
                                             {!saveValid.ID_NUM &&
                                                 <Typography className='b-validate'><HighlightOffIcon sx={{ width: '17px', height: '17px' }} />{t('frm_required')}</Typography>

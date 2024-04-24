@@ -4,7 +4,7 @@ import {
     InputAdornment,
 } from "@mui/material";
 
-const TextInput = ({ value, icon, name, placeholder, classList, handleChange, disabled = false }) => {
+const TextInput = ({ value, icon, name, placeholder, classList, handleChange, disabled = false, handleKey = null}) => {
     //// Init Variable
     const [data, setData] = useState(value);
 
@@ -24,6 +24,7 @@ const TextInput = ({ value, icon, name, placeholder, classList, handleChange, di
                 placeholder={placeholder}
                 onChange={(e) => setData(data => e.target.value)}
                 onBlur={(e) => handleChange(name, e.target.value)}
+                onKeyPress={(e) => handleKey(e, data)}
                 InputProps={{
                     endAdornment: (
                         <InputAdornment position="end">

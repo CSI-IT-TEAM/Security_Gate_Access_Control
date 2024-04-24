@@ -151,7 +151,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
         {
             field: "ORD",
             headerName: t('no'),
-            width: 20,
+            width: 10,
             align: "center",
             headerAlign: "center",
             headerClassName: "super-app-theme--header",
@@ -167,7 +167,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
         {
             field: "VIST_CMPY_NM",
             headerName: t('company'),
-            width: 120,
+            width: 100,
             align: "left",
             editable: false,
             headerAlign: "center",
@@ -185,7 +185,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
         {
             field: "VISIT_NM",
             headerName: t('visit_nm'),
-            width: 220,
+            width: 200,
             editable: false,
             headerAlign: "center",
             headerClassName: "super-app-theme--header",
@@ -193,8 +193,8 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
         {
             field: "NEED_DIV_NM",
             headerName: t('need_div'),
-            width: 140,
-            align: "center",
+            width: 80,
+            align: "left",
             editable: false,
             headerAlign: "center",
             headerClassName: "super-app-theme--header",
@@ -205,7 +205,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
         {
             field: "CAR_TYPE",
             headerName: t('vehicle_type'),
-            width: 100,
+            width: 80,
             editable: false,
             align: "center",
             headerAlign: "center",
@@ -220,7 +220,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
             headerName: t('car_num'),
             // description: "This column has a value getter and is not sortable.",
             sortable: false,
-            width: 150,
+            width: 110,
             align: "center",
             //   valueGetter: (params) =>
             //     `${params.row.firstName || ""} ${params.row.lastName || ""}`,
@@ -229,7 +229,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
         {
             field: "DEST_NM",
             headerName: t('dest_build'),
-            width: 150,
+            width: 120,
             align: "left",
             headerAlign: "center",
             headerClassName: "super-app-theme--header",
@@ -254,7 +254,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
         {
             field: "VIST_STS_NM",
             headerName: t('status'),
-            width: 100,
+            width: 90,
             editable: false,
             align: "center",
             headerAlign: "center",
@@ -266,7 +266,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
         {
             field: "IN_DATE_TIME",
             headerName: t('time_in'),
-            width: 175,
+            width: 100,
             align: "center",
             editable: false,
             headerAlign: "center",
@@ -275,7 +275,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
         {
             field: "OUT_DATE_TIME",
             headerName: t('time_out'),
-            width: 175,
+            width: 100,
             align: "center",
             editable: false,
             headerAlign: "center",
@@ -320,70 +320,77 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
                     </Divider>
                 </Stack>
             </Box>
-            <DataGrid
-                sx={{
-                    "& .MuiDataGrid-row:hover": {
-                        color: "primary.main",
-                        background: "#fffee3",
-                    },
-                    "& .MuiDataGrid-columnHeaderTitleContainer": {
-                        backgroundColor: "#1c366b",
-                        color: "white",
-                    },
-                    "& .MuiDataGrid-columnHeaderTitleContainer .MuiSvgIcon-root": {
-                        color: "white",
-                    },
-                    "& .super-app-theme--header": {
-                        backgroundColor: "#1c366b",
-                        color: "white",
-                    },
-                    "& .super-app-theme--text_supervisor": {
-                        color: "gold",
-                        fontWeight: "600",
-                    },
-                    "& .MuiDataGrid-cell": {
-                        cursor: "pointer",
-                    },
-                    "& .MuiIconButton-root": {
-                        color: "#fff",
-                    },
-                    "& .MuiTablePagination-actions .MuiIconButton-root": {
-                        color: "#333",
-                    }
-                }}
-                getRowId={getRowId}
-                rows={table}
-                columns={columns}
-                checkboxSelection
-                disableRowSelectionOnClick
-                onRowSelectionModelChange={(items) => {
-                    handleSet(items);
-                    setSelectionModel(items);
-                }}
-                rowSelectionModel={selectionModel}
-                initialState={{
-                    pagination: {
-                        paginationModel: {
-                            pageSize: 25,
+            <Box sx={{ height: 500, width: '100%' }}>
+                <DataGrid
+                    sx={{
+                        "& .MuiDataGrid-row:hover": {
+                            color: "primary.main",
+                            background: "#fffee3",
                         },
-                    },
-                }}
-                getRowClassName={(params) => {
-                    return params.row.VIST_ID === selectID ? 's-selected-row' : '';
-                }}
-                pageSizeOptions={[25, 50, 75, 100]}
-                onRowClick={handleRowClick}
-                slots={{
-                    toolbar: CustomToolbar,
-                    loadingOverlay: LinearProgress,
-                    noRowsOverlay: CustomNoRowsOverlay,
-                }}
-                slotProps={{
-                    toolbar: {
-                        showQuickFilter: true,
-                    },
-                }}
-            />
+                        "& .MuiDataGrid-columnHeaderTitleContainer": {
+                            backgroundColor: "#1c366b",
+                            color: "white",
+                        },
+                        "& .MuiDataGrid-columnHeaderTitleContainer .MuiSvgIcon-root": {
+                            color: "white",
+                        },
+                        "& .super-app-theme--header": {
+                            backgroundColor: "#1c366b",
+                            color: "white",
+                        },
+                        "& .super-app-theme--text_supervisor": {
+                            color: "gold",
+                            fontWeight: "600",
+                        },
+                        "& .MuiDataGrid-cell": {
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            padding: "8px 0",
+                        },
+                        "& .MuiIconButton-root": {
+                            color: "#fff",
+                        },
+                        "& .MuiTablePagination-actions .MuiIconButton-root": {
+                            color: "#333",
+                        }
+                    }}
+                    rowBufferPx={25}
+                    getRowId={getRowId}
+                    rows={table}
+                    columns={columns}
+                    checkboxSelection
+                    disableRowSelectionOnClick
+                    onRowSelectionModelChange={(items) => {
+                        handleSet(items);
+                        setSelectionModel(items);
+                    }}
+                    rowSelectionModel={selectionModel}
+                    initialState={{
+                        pagination: {
+                            paginationModel: {
+                                pageSize: 50,
+                            },
+                        },
+                    }}
+                    getRowClassName={(params) => {
+                        return params.row.VIST_ID === selectID ? 's-selected-row' : '';
+                    }}
+                    pageSizeOptions={[50, 75, 100]}
+                    onRowClick={handleRowClick}
+                    slots={{
+                        toolbar: CustomToolbar,
+                        loadingOverlay: LinearProgress,
+                        noRowsOverlay: CustomNoRowsOverlay,
+                    }}
+                    getRowHeight={() => 'auto'}
+                    slotProps={{
+                        toolbar: {
+                            showQuickFilter: true,
+                        },
+                    }}
+                />
+            </Box>
         </>
     )
 }
