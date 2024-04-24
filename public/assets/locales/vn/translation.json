@@ -132,6 +132,9 @@
     "404_title": "Oops! Trang không tìm thấy",
     "404_desc": "Trang bạn đang tìm kiếm có thể đã bị xóa, thay đổi tên hoặc tạm thời không khả dụng",
 
+    "camera_connect": "Camera kết nối",
+    "camera_disconnect": "Camera mất kết nối",
+
     "frm_required": "Trường dữ liệu không được rỗng",
     "frm_id_required": "Mã nhân viên không hợp lệ",
 

@@ -64,6 +64,9 @@ const Homepage = () => {
     ////// Transldate
     const { t } = useTranslation();
 
+    //// Camera State
+    const [camera, setCamera] = useState(false);
+
     //// Capture Image
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
@@ -101,9 +104,11 @@ const Homepage = () => {
                 // If the video reference exists, assign the stream to its source
                 if (videoRef.current) {
                     videoRef.current.srcObject = stream;
+                    setCamera(camera => true);
                 }
             } catch (error) {
                 console.error('Error accessing the camera:', error);
+                setCamera(camera => false);
             }
         };
 
@@ -116,6 +121,7 @@ const Homepage = () => {
                 // Stop each track in the stream
                 const tracks = videoRef.current.srcObject.getTracks();
                 tracks.forEach(track => track.stop());
+                setCamera(camera => false);
             }
         };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -123,7 +129,7 @@ const Homepage = () => {
 
     // Function to capture an image from the camera stream
     const handleCaptureImage = () => {
-        if (videoRef.current && canvasRef.current) {
+        if (videoRef.current && canvasRef.current && camera) {
             // Get the 2D context of the canvas
             const context = canvasRef.current.getContext('2d');
             // Draw the current frame from the video element onto the canvas
@@ -134,6 +140,8 @@ const Homepage = () => {
 
             // Set the captured image as state
             setThumb(thumb => imageDataURL);
+        }else{
+            setThumb(thumb => userThumb);
         }
     };
 
@@ -248,48 +256,64 @@ const Homepage = () => {
                 if (_result) {
                     ////Upload User Picture From Camera
                     if(isNullOrEmpty(typeTake)){
-                        if (videoRef.current && canvasRef.current) {
-                            // Get the 2D context of the canvas
-                            const context = canvasRef.current.getContext('2d');
-                            // Draw the current frame from the video element onto the canvas
-                            context.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height);
-                
-                            // Convert the canvas content to a data URL (image)
-                            const imageDataURL = canvasRef.current.toDataURL('image/png');
-                
-                            // Set the captured image as state
-                            let blobFile = await convertToBlob(imageDataURL);
-                            let _uploadConfig = GateImageUploadParams(data, blobFile);
+                        if(camera){
+                            if (videoRef.current && canvasRef.current) {
+                                // Get the 2D context of the canvas
+                                const context = canvasRef.current.getContext('2d');
+                                // Draw the current frame from the video element onto the canvas
+                                context.drawImage(videoRef.current, 0, 0, canvasRef.current.width, canvasRef.current.height);
+                    
+                                // Convert the canvas content to a data URL (image)
+                                const imageDataURL = canvasRef.current.toDataURL('image/png');
+                    
+                                // Set the captured image as state
+                                let blobFile = await convertToBlob(imageDataURL);
+                                let _uploadConfig = GateImageUploadParams(data, blobFile);
 
-                            let _result = await fetchPostFormData(
-                                GateImageUpdateURL,
-                                _uploadConfig
-                            );
+                                let _result = await fetchPostFormData(
+                                    GateImageUpdateURL,
+                                    _uploadConfig
+                                );
 
-                            if(_result){
-                                Swal.close();
-                                Swal.fire({
-                                    position: "center",
-                                    icon: "success",
-                                    title: t("title_reg_success"),
-                                    showConfirmButton: false,
-                                    timer: 1500,
-                                }).then(() => {
-                                    setThumb(thumb => imageDataURL);
-                                    setTypeTake(typeTake => "");
-                                    setCount(count => count + 1);
-                                    deleteListRef.current = [];
-                                });
-                            }else{
-                                Swal.close();
-                                Swal.fire({
-                                    icon: "error",
-                                    position: "center",
-                                    title: t("swal_upload_img_failed"),
-                                    text: t("text_please_check_again"),
-                                    timer: 1500,
-                                });
+                                if(_result){
+                                    Swal.close();
+                                    Swal.fire({
+                                        position: "center",
+                                        icon: "success",
+                                        title: t("title_reg_success"),
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                    }).then(() => {
+                                        setThumb(thumb => imageDataURL);
+                                        setTypeTake(typeTake => "");
+                                        setCount(count => count + 1);
+                                        deleteListRef.current = [];
+                                    });
+                                }else{
+                                    Swal.close();
+                                    Swal.fire({
+                                        icon: "error",
+                                        position: "center",
+                                        title: t("swal_upload_img_failed"),
+                                        text: t("text_please_check_again"),
+                                        timer: 1500,
+                                    });
+                                }
                             }
+                        }else{
+                            Swal.close();
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: t("title_reg_success"),
+                                showConfirmButton: false,
+                                timer: 1500,
+                            }).then(() => {
+                                setThumb(thumb => userThumb);
+                                setTypeTake(typeTake => "");
+                                setCount(count => count + 1);
+                                deleteListRef.current = [];
+                            });
                         }
                     }
                     else{
@@ -541,7 +565,7 @@ const Homepage = () => {
             if(_imgData !== null && _imgData.length > 0){
                 setThumb(thumb => getURLImageFormat(_imgData[0].PHOTO));
             }else{
-                if(isNullOrEmpty(selectID)){
+                if(isNullOrEmpty(selectID) && camera){
                     handleCaptureImage();
                 }else{
                     setThumb(thumb => userThumb);
@@ -577,12 +601,27 @@ const Homepage = () => {
         }else{
             Swal.close();
             Swal.fire({
-                icon: "error",
-                position: "center",
-                title: t("title_something_wrong"),
+                title: t('title_something_wrong'),
                 text: t("not-found"),
+                position: "center",
+                icon: "error",
+                showCancelButton: false,
+                confirmButtonText: "OK",
+            }).then(async (result) => {
+                if(result){
+                    handleNew();
+                }
             });
         }
+    }
+
+    //// Handle Connect
+    const handleConnect = () => {
+        const baseUrl = 'https://172.30.10.120/';
+        // Construct the URL with query parameters
+        const url = new URL(baseUrl);
+        // Open the new website in a new tab
+        window.open(url.toString(), '_blank');
     }
 
     return (
@@ -603,7 +642,7 @@ const Homepage = () => {
                     <video ref={videoRef} autoPlay style={{ display: "block", position: "absolute", opacity: 0, width: '400px', height: 'auto' }} />
                     <canvas ref={canvasRef} style={{ display: "none" }} width={400} height={300} />
                     <Box style={{ position: 'relative', width: "100%" }}>
-                        <Typography variant="h5" className="s-title">
+                        <Typography variant="h5" className="s-title" onClick={handleConnect}>
                             {t('title_gate_secure')}
                         </Typography>
                         <Box sx={{ position: 'absolute', top: 5, right: 0, }}>

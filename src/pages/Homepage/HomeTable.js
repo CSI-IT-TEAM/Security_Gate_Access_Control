@@ -301,7 +301,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
                         <DateRangePicker
                             cleanable={false}
                             size="lg"
-                            showOneCalendar={false}
+                            showOneCalendar={true}
                             value={date}
                             onChange={(e) => setDate(date => e)}
                         />
