@@ -67,7 +67,9 @@ export const CustomToolbar = () => {
                         }}
                     />
                     <GridToolbarExport
-                        allColumns={true}
+                        csvOptions={{
+                            allColumns: true
+                        }}
                         sx={{
                             textTransform: "none",
                         }}

@@ -107,7 +107,7 @@ const Homepage = () => {
                     setCamera(camera => true);
                 }
             } catch (error) {
-                console.error('Error accessing the camera:', error);
+                console.log('Error accessing the camera:', error);
                 setCamera(camera => false);
             }
         };
@@ -284,10 +284,7 @@ const Homepage = () => {
                                         showConfirmButton: false,
                                         timer: 1500,
                                     }).then(() => {
-                                        setThumb(thumb => imageDataURL);
-                                        setTypeTake(typeTake => "");
-                                        setCount(count => count + 1);
-                                        deleteListRef.current = [];
+                                        handleNew();
                                     });
                                 }else{
                                     Swal.close();
@@ -309,10 +306,7 @@ const Homepage = () => {
                                 showConfirmButton: false,
                                 timer: 1500,
                             }).then(() => {
-                                setThumb(thumb => userThumb);
-                                setTypeTake(typeTake => "");
-                                setCount(count => count + 1);
-                                deleteListRef.current = [];
+                                handleNew();
                             });
                         }
                     }
@@ -335,9 +329,7 @@ const Homepage = () => {
                                     showConfirmButton: false,
                                     timer: 1500,
                                 }).then(() => {
-                                    setTypeTake(typeTake => "");
-                                    setCount(count => count + 1);
-                                    deleteListRef.current = [];
+                                    handleNew();
                                 });
                             }else{
                                 Swal.close();
@@ -358,9 +350,7 @@ const Homepage = () => {
                                 showConfirmButton: false,
                                 timer: 1500,
                             }).then(() => {
-                                setTypeTake(typeTake => "");
-                                setCount(count => count + 1);
-                                deleteListRef.current = [];
+                                handleNew();
                             });
                         }
                     }

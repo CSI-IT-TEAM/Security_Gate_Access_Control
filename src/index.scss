@@ -766,3 +766,24 @@ input[type=number]::-webkit-outer-spin-button {
         min-width: 300px;
     }
 }
+
+.s-popover {
+    .MuiPopover-paper {
+        box-shadow: none !important;
+        border: 1px solid rgba(224, 224, 224, 1) !important;
+        height: 65px !important;
+        border-radius: 0 !important;
+        width: 230px !important;
+        text-transform: capitalize !important;
+        display: flex !important;
+        align-items: center !important;
+        background-color: #2b3a4a !important;
+
+        p {
+            font-size: 15px !important;
+            padding: 0 20px !important;
+            font-weight: 600 !important;
+            color: $color-white;
+        }
+    }
+}

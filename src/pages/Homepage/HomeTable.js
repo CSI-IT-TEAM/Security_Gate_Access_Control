@@ -185,7 +185,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
         {
             field: "VISIT_NM",
             headerName: t('visit_nm'),
-            width: 200,
+            width: 150,
             editable: false,
             headerAlign: "center",
             headerClassName: "super-app-theme--header",
@@ -205,7 +205,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
         {
             field: "CAR_TYPE",
             headerName: t('vehicle_type'),
-            width: 80,
+            width: 50,
             editable: false,
             align: "center",
             headerAlign: "center",
@@ -237,7 +237,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
         {
             field: "ID_NUM",
             headerName: t('id_num'),
-            width: 130,
+            width: 120,
             editable: false,
             align: "left",
             headerAlign: "center",
@@ -347,6 +347,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
                             display: "flex",
                             alignItems: "center",
                             padding: "8px 0",
+                            wordBreak: "break-all",
                         },
                         "& .MuiIconButton-root": {
                             color: "#fff",
@@ -372,6 +373,12 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
                                 pageSize: 50,
                             },
                         },
+                        columns: {
+                            columnVisibilityModel: {
+                              // Hide columns status and traderName, the other columns will remain visible
+                              VIST_ID: false,
+                            },
+                        },
                     }}
                     getRowClassName={(params) => {
                         return params.row.VIST_ID === selectID ? 's-selected-row' : '';
@@ -387,6 +394,7 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
                     slotProps={{
                         toolbar: {
                             showQuickFilter: true,
+                            csvOptions: { allColumns: true }
                         },
                     }}
                 />
