@@ -580,7 +580,7 @@ const Homepage = () => {
                     DEST_EMP_NO     : _searchData[0].EMP_NO, 
                     DEST_EMP_NM     : _searchData[0].EMP_NAME, 
                     VIST_CARD_NO    : _searchData[0].VIST_CARD_NO, 
-                    VIST_STS        : _searchData[0].VIST_STS, 
+                    VIST_STS        : isNullOrEmpty(selectID) ? _searchData[0].VIST_STS : "002", 
                     IN_YMD          : _searchData[0].IN_YMD ?? "",
                     IN_HMS          : _searchData[0].IN_HMS ?? "", 
                     REMARK          : _searchData[0].REMARK, 

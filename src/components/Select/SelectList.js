@@ -1,6 +1,8 @@
 import Select from "react-select";
 
 const SelectList = ({ name, options, value, handleChange }) => {
+    const defaultClass = (name === "VIST_STS" && value && value.length > 0 && value[0].value === "002") ? "border-orange-300" : "border-grey-300";
+
     return (
         <>
             <Select
@@ -10,7 +12,7 @@ const SelectList = ({ name, options, value, handleChange }) => {
                 options={options}
                 classNames={{
                     control: (state) =>
-                        state.isFocused ? "border-red-600" : "border-grey-300",
+                        state.isFocused ? "border-red-600" : defaultClass,
                 }}
                 styles={{
                     control: (base, { isDisabled, isFocused }) => ({
