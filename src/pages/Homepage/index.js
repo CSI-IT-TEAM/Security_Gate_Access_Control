@@ -221,8 +221,9 @@ const Homepage = () => {
         // }).then(async (result) => {
         //     if (result.value) {
                 Swal.fire({
-                    title: "Please wait!",
+                    //title: "Please wait!",
                     allowOutsideClick: false,
+                    background: "transparent",
                     didOpen: () => {
                         Swal.showLoading();
                     },
@@ -406,8 +407,9 @@ const Homepage = () => {
             }).then(async (result) => {
                 if (result.value) {
                     Swal.fire({
-                        title: "Please wait!",
+                        //title: "Please wait!",
                         allowOutsideClick: false,
+                        background: "transparent",
                         didOpen: () => {
                             Swal.showLoading();
                         },
@@ -512,8 +514,9 @@ const Homepage = () => {
             return;
         }
         Swal.fire({
-            title: "Please wait!",
+            //title: "Please wait!",
             allowOutsideClick: false,
+            background: "transparent",
             didOpen: () => {
                 Swal.showLoading();
             },
@@ -580,7 +583,7 @@ const Homepage = () => {
                     DEST_EMP_NO     : _searchData[0].EMP_NO, 
                     DEST_EMP_NM     : _searchData[0].EMP_NAME, 
                     VIST_CARD_NO    : _searchData[0].VIST_CARD_NO, 
-                    VIST_STS        : isNullOrEmpty(selectID) ? _searchData[0].VIST_STS : "002", 
+                    VIST_STS        : _searchData[0].VIST_STS, 
                     IN_YMD          : _searchData[0].IN_YMD ?? "",
                     IN_HMS          : _searchData[0].IN_HMS ?? "", 
                     REMARK          : _searchData[0].REMARK, 
@@ -620,8 +623,9 @@ const Homepage = () => {
             // Call the desired function when Enter is pressed
 
             Swal.fire({
-                title: "Please wait!",
+                //title: "Please wait!",
                 allowOutsideClick: false,
+                background: "transparent",
                 didOpen: () => {
                     Swal.showLoading();
                 },

@@ -65,8 +65,9 @@ const HomeTable = ({ plant, handleSearch, handleSet, count }) => {
     //// Get Table Data
     const handleTable = async () => {
         Swal.fire({
-            title: "Please wait!",
+            //title: "Please wait!",
             allowOutsideClick: false,
+            background: "transparent",
             didOpen: () => {
                 Swal.showLoading();
             },
