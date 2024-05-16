@@ -1,4 +1,4 @@
-const baseURL = "https://172.30.10.120/";
+const baseURL = "https://vjweb.dskorea.com/";
 //const baseURL = "http://172.30.30.41:3000/";
 
 //R Procedures====================================================================
@@ -16,4 +16,4 @@ export const GateComboUpdateURL =
   baseURL + "LMES/PKG_RSM_CONTRACTOR.GATE_COMBO_SAVE/SAVE";
 export const GateDataUpdateURL =
   baseURL + "LMES/PKG_RSM_CONTRACTOR.GATE_DATA_SAVE/SAVE";
-export const GateImageUpdateURL = "https://172.30.10.120:10000/RSM_GATE_UPLOAD";
+export const GateImageUpdateURL = "https://vjweb.dskorea.com/:10000/RSM_GATE_UPLOAD";
