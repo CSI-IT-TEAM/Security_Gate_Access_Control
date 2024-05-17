@@ -16,4 +16,4 @@ export const GateComboUpdateURL =
   baseURL + "LMES/PKG_RSM_CONTRACTOR.GATE_COMBO_SAVE/SAVE";
 export const GateDataUpdateURL =
   baseURL + "LMES/PKG_RSM_CONTRACTOR.GATE_DATA_SAVE/SAVE";
-export const GateImageUpdateURL = "https://vjweb.dskorea.com/:10000/RSM_GATE_UPLOAD";
+export const GateImageUpdateURL = "https://vjweb.dskorea.com:10000/RSM_GATE_UPLOAD";
