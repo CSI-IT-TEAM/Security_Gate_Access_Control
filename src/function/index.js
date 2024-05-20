@@ -164,5 +164,5 @@ export const getSearchValue = (type, value1, value2) => {
 }
 
 export const getURLImageFormat = (value) => {
-    return "https://172.30.10.120:10000/" + value;
+    return "https://vjweb.dskorea.com:10000/" + value;
 }
